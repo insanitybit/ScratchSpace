@@ -3,6 +3,8 @@
 
 using namespace std;
 
+// demonstration of cache locality.
+
 int main()
 {
 	const size_t rows_size = 1000;
@@ -18,7 +20,7 @@ int main()
 	{
 		for (size_t j = 0; j < cols_size; ++j)
 		{
-			matrix[i][j] = i + i * j;
+			matrix[i][j] = i + i * j; // switching [i][j] to [j][i] gives 50% performance. All due to cache misses.
 		}
 	}
 
