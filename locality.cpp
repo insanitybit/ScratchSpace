@@ -14,18 +14,37 @@ int main()
 	std::chrono::time_point<std::chrono::steady_clock> start, end;
 	std::chrono::duration<double> elapsed_seconds;
 
+	cout << "Going through the cache friendly way:" << endl;
+
 	start = std::chrono::steady_clock::now();
 
 	for (size_t i = 0; i < rows_size; ++i)
 	{
 		for (size_t j = 0; j < cols_size; ++j)
 		{
-			matrix[i][j] = i + i * j; // switching [i][j] to [j][i] gives 50% performance. All due to cache misses.
+			matrix[i][j] = (i + i * j); // switching [i][j] to [j][i] gives 50% performance. All due to cache misses.
 		}
 	}
 
 	end = std::chrono::steady_clock::now();
 
+	cout << "matrix::  " << elapsed_seconds.count() * 1000 << "ms" << endl;
+
+	cout << endl;
+
+	cout << "Going through the not so cache friendly way" << endl;
+
+	start = std::chrono::steady_clock::now();
+
+	for (size_t i = 0; i < rows_size; ++i)
+	{
+		for (size_t j = 0; j < cols_size; ++j)
+		{
+			matrix[j][i] = i + i * j; // switching [i][j] to [j][i] gives 50% performance. All due to cache misses.
+		}
+	}
+
+	end = std::chrono::steady_clock::now();
 
 	elapsed_seconds = end-start;
 	cout << "matrix::  " << elapsed_seconds.count() * 1000 << "ms" << endl;
