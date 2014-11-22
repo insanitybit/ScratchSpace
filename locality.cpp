@@ -27,6 +27,7 @@ int main()
 	}
 
 	end = std::chrono::steady_clock::now();
+	elapsed_seconds = end - start;
 
 	cout << "matrix::  " << elapsed_seconds.count() * 1000 << "ms" << endl;
 
