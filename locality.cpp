@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-	const size_t rows_size = 1000;
+	const size_t rows_size = 100;
 	const size_t cols_size = rows_size;
 	size_t matrix[rows_size][cols_size];
 
@@ -22,7 +22,7 @@ int main()
 	{
 		for (size_t j = 0; j < cols_size; ++j)
 		{
-			matrix[i][j] = (i + i * j); // switching [i][j] to [j][i] gives 50% performance. All due to cache misses.
+			matrix[i][j] = i;
 		}
 	}
 
@@ -41,7 +41,7 @@ int main()
 	{
 		for (size_t j = 0; j < cols_size; ++j)
 		{
-			matrix[j][i] = i + i * j; // switching [i][j] to [j][i] gives 50% performance. All due to cache misses.
+			matrix[j][i] = i;
 		}
 	}
 

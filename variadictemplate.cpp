@@ -5,7 +5,6 @@ using namespace std;
 
 void add(int a, int b, int c);
 
-
 template<typename T, typename... Args>
 void func(T, Args... args){
 	
