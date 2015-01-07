@@ -10,7 +10,7 @@ void empty_fake_work(size_t);
 
 int main()
 {
-	const size_t run_count = 1000000000000;
+	const size_t run_count = 100000000;
 	const auto core_count = thread::hardware_concurrency() - 1;
 
 
@@ -24,14 +24,11 @@ int main()
 }
 
 void empty_fake_work(size_t j){
-	for (size_t i = 0; i < 10000000000; ++i){
-		i = i + i * 2;
-		if(i % 2 != 0)
-			i--;
-		else
-			i -= 2;
+	size_t i = 0;
+	for (i = 0; i < 1000000; ++i){
+		i = i + 3 * 2;
 	}
 
-	if(j % 1000000 == 0)
-		cout << j << " complete\n";
+	if(j % 1000 == 0)
+		cout << j << " complete z = " << i << "\n";
 }
