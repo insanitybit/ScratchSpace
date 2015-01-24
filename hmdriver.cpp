@@ -1,7 +1,9 @@
 /*
+Colin O'Brien
+November 24th 2014
 g++ --std=c++11 ./hmdriver.cpp
 
-This is just some homework assignment.
+
 */
 
 #include <iostream>
@@ -12,7 +14,7 @@ using namespace std;
 
 typedef function<size_t(string&)> fn;
 
-
+// This is the hash function that we will be passing to our generic hash map class
 size_t hash_fn(string&);
 
 int main()
@@ -53,9 +55,11 @@ int main()
 	return 0;
 }
 
+// hash function as described by angel page
 size_t hash_fn(string& str){
 	size_t pos;
-	auto fchar = str.begin();
-	auto echar = str.end();
+	auto fchar = str.cbegin();
+	auto echar = (str.end() - 1);
 	pos = (static_cast<size_t>(*fchar) + static_cast<size_t>(*echar)) % 23;
+	return pos;
 }

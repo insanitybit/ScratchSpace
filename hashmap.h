@@ -1,3 +1,10 @@
+/*
+Colin O'Brien
+November 24th 2014
+g++ --std=c++11 ./hmdriver.cpp
+
+*/
+
 #ifndef HASHMAP_H
 #define HASHMAP_H
 #include <iostream>
@@ -39,7 +46,7 @@ size_t hashmap<fnc,data>::store(data& input){
 
 	index = fn(input);
 
-	while(shadow[index]){
+	while(shadow[index]){ // This should be generic. Right now this class only works on strings.
 		index++;
 		if(index >= map.size()) // If we hit the last space, start from index 0 and continue
 			index = 0;
@@ -58,6 +65,12 @@ ssize_t hashmap<fnc,data>::lookup(data& s){
 	index = fn(s);
 
 	for (size_t i = index; i < map.size(); ++i)
+	{
+		if(map[i] == s)
+			return i;
+	}
+
+	for (size_t i = 0; i < index; ++i)
 	{
 		if(map[i] == s)
 			return i;

@@ -1,7 +1,5 @@
 #include "Threadpool.h"
 #include <iostream>
-#include <array>
-#include <mutex>
 
 using namespace std;
 
@@ -27,6 +25,8 @@ void empty_fake_work(size_t j){
 	size_t i = 0;
 	for (i = 0; i < 1000000; ++i){
 		i = i + 3 * 2;
+		i--;
+		i >> 2;
 	}
 
 	if(j % 1000 == 0)

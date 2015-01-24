@@ -8,7 +8,6 @@ int main()
 	array<int, 4> arr {1, 3, 5, 7};
 
 	// iterators
-
 	const auto beg = arr.cbegin();
 	const auto end = arr.cend();
 
@@ -17,8 +16,17 @@ int main()
 	cout << "Dereferencing beg + 0 " << *beg << endl;
 	cout << "Dereferencing beg + 1 " << *(beg+1) << endl;
 	cout << "Dereferencing beg + 2 " << *(beg + 2)<< endl;
-	cout << "Dereferencing end - 1 " << *(end - 1) << endl; // an iterator to .cend() points to the element after the last
-	
+	cout << "Dereferencing end - 1 " << *(end - 1) << endl; 
+
+
+	cout << "\n\nPrinting each element in array\n\n";
+
+	for (int i = 0; i < arr.size(); ++i)
+	{
+		cout << arr.at(i) << endl;
+		//cout << arr[i] << endl;
+	}
+
 
 	cout << "\n\nPrinting using iterator loop\n\n";
 
@@ -27,7 +35,7 @@ int main()
 		cout << *i << endl;
 	}
 
-	// typical iterator loops look more like this
+	// //typical iterator loops look more like this
 	// for (auto i = arr.cbegin(); i != arr.cend(); ++i)
 	// {
 		
